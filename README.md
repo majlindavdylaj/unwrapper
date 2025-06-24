@@ -1,3 +1,8 @@
+<p align="center">
+	<a href="https://pub.dartlang.org/packages/unwrapper"><img src="https://img.shields.io/pub/v/unwrapper?color=blue" alt="Pub dev"></a>
+	<a href="https://github.com/majlindavdylaj/unwrapper/actions"><img src="https://github.com/majlindavdylaj/unwrapper/workflows/Build/badge.svg" alt="Build Status"></a>
+</p>
+
 
 # 🧩 Unwrapper
 
