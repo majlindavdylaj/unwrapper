@@ -8,9 +8,12 @@ void main() {
     final testChild = Text('Child');
 
     await tester.pumpWidget(
-      Unwrapper(
-        unwrap: false, // Disable unwrapping
-        child: testChild,
+      Directionality(
+        textDirection: TextDirection.ltr,
+        child: Unwrapper(
+          unwrap: false, // Disable unwrapping
+          child: testChild,
+        ),
       ),
     );
 
@@ -26,9 +29,12 @@ void main() {
     final wrapped = Container(child: innerChild);
 
     await tester.pumpWidget(
-      Unwrapper(
-        unwrap: true, // Enable unwrapping
-        child: wrapped,
+      Directionality(
+        textDirection: TextDirection.ltr,
+        child: Unwrapper(
+          unwrap: true, // Enable unwrapping
+          child: wrapped,
+        ),
       ),
     );
 
@@ -49,10 +55,13 @@ void main() {
     final wrapped = Column(children: [child0, child1, child2]);
 
     await tester.pumpWidget(
-      Unwrapper(
-        unwrap: true,
-        childrenIndex: 1, // We want to unwrap the second child (index 1)
-        child: wrapped,
+      Directionality(
+        textDirection: TextDirection.ltr,
+        child: Unwrapper(
+          unwrap: true,
+          childrenIndex: 1, // We want to unwrap the second child (index 1)
+          child: wrapped,
+        ),
       ),
     );
 
@@ -73,16 +82,19 @@ void main() {
     final wrapped = SizedBox(child: Text('Inner'));
 
     await tester.pumpWidget(
-      Unwrapper(
-        unwrap: true,
-        // Custom resolver returns `customResolved` if widget is a SizedBox
-        resolver: (widget) {
-          if (widget is SizedBox) {
-            return customResolved;
-          }
-          return null; // Otherwise fallback to default logic
-        },
-        child: wrapped,
+      Directionality(
+        textDirection: TextDirection.ltr,
+        child: Unwrapper(
+          unwrap: true,
+          // Custom resolver returns `customResolved` if widget is a SizedBox
+          resolver: (widget) {
+            if (widget is SizedBox) {
+              return customResolved;
+            }
+            return null; // Otherwise fallback to default logic
+          },
+          child: wrapped,
+        ),
       ),
     );
 
@@ -100,12 +112,15 @@ void main() {
     final wrapped = Container(child: innerChild);
 
     await tester.pumpWidget(
-      Unwrapper(
-        unwrap: true,
-        // Wrap the unwrapped child in Padding with 8px padding
-        wrapperBuilder: (child) =>
-            Padding(padding: EdgeInsets.all(8), child: child),
-        child: wrapped,
+      Directionality(
+        textDirection: TextDirection.ltr,
+        child: Unwrapper(
+          unwrap: true,
+          // Wrap the unwrapped child in Padding with 8px padding
+          wrapperBuilder: (child) =>
+              Padding(padding: EdgeInsets.all(8), child: child),
+          child: wrapped,
+        ),
       ),
     );
 
@@ -124,10 +139,13 @@ void main() {
     final leafWidget = Text('Leaf');
 
     await tester.pumpWidget(
-      Unwrapper(
-        unwrap: true,
-        fallback: fallback, // Provide fallback widget
-        child: leafWidget,
+      Directionality(
+        textDirection: TextDirection.ltr,
+        child: Unwrapper(
+          unwrap: true,
+          fallback: fallback, // Provide fallback widget
+          child: leafWidget,
+        ),
       ),
     );
 
